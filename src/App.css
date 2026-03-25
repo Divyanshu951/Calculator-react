@@ -1,0 +1,11 @@
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.btn {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
