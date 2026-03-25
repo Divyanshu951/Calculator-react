@@ -1,11 +1,187 @@
+/* ===== Main phone-like container ===== */
+.main-container {
+  width: 375px;
+  height: 812px;
+  background-color: #1F1F1F;
+  border-radius: 40px;
+  padding: 50px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.12),
+    0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ===== History panel (scrollable) ===== */
+.history-area {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 5px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.history-area::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.history-entry {
+  text-align: right;
+  margin-bottom: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.history-expression {
+  font-size: 16px;
+  color: #9e9e9e;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.history-result {
+  font-size: 16px;
+  color: #9e9e9e;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ===== Current display ===== */
+.display-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px 5px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 10px;
+  min-height: 100px;
+  justify-content: flex-end;
+}
+
+.equation {
+  font-size: 28px;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  word-wrap: break-word;
+  max-width: 100%;
+  text-align: right;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  min-height: 36px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.result {
+  font-size: 52px;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 300;
+  line-height: 1.1;
+  min-height: 58px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.result.error {
+  color: #d32f2f;
+  font-size: 28px;
+}
+
+/* ===== Keypad grid ===== */
 .keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+  padding: 8px 0;
+  flex-shrink: 0;
+  height: 52%;
 }
 
+/* ===== Base button ===== */
 .btn {
-  padding: 10px;
+  background: transparent;
   border: none;
+  font-size: 28px;
+  color: #ffffff;
   cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.15s ease;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
+
+.btn:hover {
+  background-color: #282828;
+}
+
+.btn:active {
+  background-color: #e8eaed;
+  transform: scale(0.95);
+}
+
+/* ===== C and Backspace — orange text ===== */
+.text-orange {
+  color: #ef6c00;
+  font-weight: 500;
+}
+
+/* ===== Right-column operators (÷ × − +) ===== */
+.operator {
+  background-color: #282828;
+  border-radius: 18px;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.operator:hover {
+  background-color: #ef6c00;
+}
+
+.operator:active {
+  background-color: #dcdfe2;
+  transform: scale(0.95);
+}
+
+/* ===== Equals button ===== */
+.equals {
+  background-color: #ef6c00;
+  color: #ffffff;
+  border-radius: 18px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.equals:hover {
+  background-color: #e65100;
+}
+
+.equals:active {
+  background-color: #d84315;
+  transform: scale(0.95);
+}
+
+/* ===== Percent button ===== */
+.percent {
+  font-size: 24px;
+}
+
